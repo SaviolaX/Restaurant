@@ -1,0 +1,88 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  div.menu {
+    border: 1px solid #ccc;
+    width: 20%;
+    margin: 40px 45px;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  div.menu:hover {
+    border: 1px solid #777;
+  }
+
+  div.menu img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  div.desc {
+    padding: 5px;
+
+  }
+
+
+  .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .add {
+    margin: 30px 0px 0px 30px;
+  }
+  .add a {
+    text-decoration: none; 
+    color: black; 
+    margin-right: 10px;
+    font-size: 20px;
+    padding: 5px;
+  }
+  .add a:hover,
+  .add a:active {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+  }
+</style>
+
+{% if user.is_authenticated %}
+<div class="add">
+  <a href="{% url 'add' %}">Add new</a>
+</div>
+{% endif %}
+
+{% for dish in dishes %}
+<div class="menu">
+		<a href="{% url 'dish' dish.id%}"><img style="height: 300px;" src="{{ dish.image.url }}"></a>
+	<div>
+		<p style="font-size: 25px">{{ dish.name }}</p>
+	</div>
+</div>
+
+{% endfor %}
+
+{% endblock content %}

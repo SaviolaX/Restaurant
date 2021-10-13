@@ -1,0 +1,60 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: black;
+  opacity: 50%;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+
+<div>
+	<div style="font-size: 30px; text-align: center; margin-top: 150px;">
+		<h1>Welcome to restaurant !!</h1>
+		<p>We are here to make your day BETTER</p><br><br>
+		<h3>Hurry up to book the table!</h3><br>
+		<button class="button" style="vertical-align:middle"><a style="text-decoration: none; color: white;" href="{% url 'reservation' %}"><span>Reserve </span></a></button>
+	</div>
+</div>
+
+{% endblock content %}

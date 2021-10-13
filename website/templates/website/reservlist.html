@@ -1,0 +1,48 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+	table {
+		width: 70%;
+		margin: 150px auto;
+	}
+
+	tr {
+		text-align: left;
+		border: 1px solid black;
+	}
+	th {
+		padding: 10px 0px;
+		font-size: 20px;
+	}
+	td {
+		padding: 5px 0px;
+	}
+	a {
+		text-decoration: none;
+		color: darkred;
+		font-size: 30px;
+	}
+</style>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Phone number</th>
+		<th>Persons</th>
+		<th>Date</th>
+	</tr>
+	{% for reserv in reservs %}
+	<tr>
+		<td>{{ reserv.name }}</td>
+		<td>{{ reserv.phone }}</td>
+		<td>{{ reserv.persons }}</td>
+		<td>{{ reserv.date }} <span><a href="{% url 'resdel' reserv.id %}">&#xd7;</a></span></td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+{% endblock %}

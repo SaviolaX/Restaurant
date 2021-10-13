@@ -1,0 +1,53 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+	.container {
+		width: 500px;
+		background-color: ;
+		margin: 100px auto;
+		font-size: 25px;
+	}
+	.container a {
+		text-decoration: none;
+		color: black;
+	}
+	.container button {
+		margin: 30px 15px 0px 0px;
+		font-size: 20px;
+		padding: 3px;
+	}
+	.b1 {
+		background-color: white;
+		border: 1px solid black;
+	}
+	.b1:hover,
+	.b1:active {
+		background-color: blue;
+		color: white;
+		border: 1px solid blue;
+	}
+	.b2 {
+		background-color: white;
+		border: 1px solid black;
+	}
+	.b2:hover,
+	.b2:active {
+		background-color: red;
+		color: white;
+		border: ;
+	}
+</style>
+
+<div class="container">
+	<form method="post">
+		{% csrf_token %}
+		<h3>Delete: {{ gal.name }}</h3>
+		<button class="b1" type="submit">Submit</button>
+		<button class="b2"><a style="" href="{% url 'image' gal.id %}">Cancel</a></button>
+	</form>
+</div>
+
+{% endblock %}
